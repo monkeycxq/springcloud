@@ -1,0 +1,57 @@
+2020-11-06 02:01:27.301  INFO 9540 --- [main] c.e.userservice.UserServiceApplication   : No active profile set, falling back to default profiles: default
+2020-11-06 02:01:28.485  WARN 9540 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-11-06 02:01:28.642  INFO 9540 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=cd00242b-9622-30c5-a61b-81efc438c376
+2020-11-06 02:01:29.039  INFO 9540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8801 (http)
+2020-11-06 02:01:29.049  INFO 9540 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-06 02:01:29.049  INFO 9540 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-06 02:01:29.276  INFO 9540 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-06 02:01:29.276  INFO 9540 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1908 ms
+2020-11-06 02:01:29.384  WARN 9540 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-11-06 02:01:29.384  INFO 9540 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-11-06 02:01:29.395  INFO 9540 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@576b7c74
+2020-11-06 02:01:29.526  WARN 9540 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-11-06 02:01:29.526  INFO 9540 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-11-06 02:01:29.841  INFO 9540 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-06 02:01:33.976  INFO 9540 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2020-11-06 02:01:34.068  WARN 9540 --- [main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-11-06 02:01:34.118  INFO 9540 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-06 02:01:34.159  INFO 9540 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-11-06 02:01:34.209  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-11-06 02:01:35.845  INFO 9540 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-11-06 02:01:35.845  INFO 9540 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-11-06 02:01:35.988  INFO 9540 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-11-06 02:01:35.988  INFO 9540 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-11-06 02:01:36.262  INFO 9540 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-11-06 02:01:37.501  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-11-06 02:01:37.745  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-11-06 02:01:37.750  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-11-06 02:01:37.755  INFO 9540 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-11-06 02:01:37.765  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1604599297765 with initial instances count: 2
+2020-11-06 02:01:37.765  INFO 9540 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SERVICE-USER with eureka with status UP
+2020-11-06 02:01:37.765  INFO 9540 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1604599297765, current=UP, previous=STARTING]
+2020-11-06 02:01:37.765  INFO 9540 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SERVICE-USER/192.168.0.102:service-user:8801: registering service...
+2020-11-06 02:01:37.826  INFO 9540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8801 (http) with context path ''
+2020-11-06 02:01:37.836  INFO 9540 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SERVICE-USER/192.168.0.102:service-user:8801 - registration status: 204
+2020-11-06 02:01:37.836  INFO 9540 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8801
+2020-11-06 02:01:39.563  INFO 9540 --- [main] c.e.userservice.UserServiceApplication   : Started UserServiceApplication in 18.282 seconds (JVM running for 21.684)
+2020-11-06 02:01:44.324  INFO 9540 --- [http-nio-8801-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 02:01:44.325  INFO 9540 --- [http-nio-8801-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-06 02:01:44.340  INFO 9540 --- [http-nio-8801-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-11-06 02:01:44.402 DEBUG 9540 --- [http-nio-8801-exec-2] c.e.userservice.UserServiceApplication   : debug删除成功！入参：9
+2020-11-06 02:01:44.402  INFO 9540 --- [http-nio-8801-exec-2] c.e.userservice.UserServiceApplication   : info删除成功！入参：9
+2020-11-06 02:01:44.402  WARN 9540 --- [http-nio-8801-exec-2] c.e.userservice.UserServiceApplication   : warn删除成功！入参：9
+2020-11-06 02:02:41.826  INFO 9540 --- [SpringContextShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application SERVICE-USER with eureka with status DOWN
+2020-11-06 02:02:41.826  WARN 9540 --- [SpringContextShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1604599361826, current=DOWN, previous=UP]
+2020-11-06 02:02:41.826  INFO 9540 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SERVICE-USER/192.168.0.102:service-user:8801: registering service...
+2020-11-06 02:02:41.836  INFO 9540 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SERVICE-USER/192.168.0.102:service-user:8801 - registration status: 204
+2020-11-06 02:02:43.117  INFO 9540 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-06 02:02:43.127  INFO 9540 --- [SpringContextShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-11-06 02:02:46.136  INFO 9540 --- [SpringContextShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-11-06 02:02:46.144  INFO 9540 --- [SpringContextShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SERVICE-USER/192.168.0.102:service-user:8801 - deregister  status: 200
+2020-11-06 02:02:46.157  INFO 9540 --- [SpringContextShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
