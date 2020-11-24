@@ -16,3 +16,15 @@ logging:
       example: debug
   file:
     name: F:\log\web-service.log
+
+# ribbon的超时时间
+service-user:
+  ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 3000
+    MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用
+    MaxAutoRetriesNextServer: 0 #重试负载均衡其他的实例最大重试次数,不包括首次调用
+    OkToRetryOnAllOperations: false  #是否所有操作都重试 ,设置为false时，只会对get请求进行重试
+
+#如果设置为true，便会对所有的请求进行重试，如果是put或post等写操作，
+#如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。

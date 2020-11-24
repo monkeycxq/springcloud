@@ -1,8 +1,7 @@
 package com.example.userservice;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,9 +27,13 @@ public class UserServiceApplication {
     @Value("${server.port}")
     String port;
 
+    @SneakyThrows
     @RequestMapping("/hi")
-    public String home(@RequestParam String name)
-    {
+    public String home(@RequestParam String name){
+        log.info("----进入了hi接口---：name:{}",name);
+        // 让线程休眠
+        Thread.sleep(10000);
+
         return "hi " + name + ",i am from port:" + port;
     }
 
