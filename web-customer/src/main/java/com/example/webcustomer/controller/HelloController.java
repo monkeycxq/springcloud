@@ -3,6 +3,7 @@ package com.example.webcustomer.controller;
 import com.example.common.util.LocalDateUtil;
 import com.example.webcustomer.domain.UserVO;
 import com.example.webcustomer.service.HelloService;
+import com.example.webcustomer.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class HelloController {
 
     @Autowired
     HelloService helloService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = "/hi")
     public String hi(@RequestParam String name){
@@ -45,6 +49,19 @@ public class HelloController {
     public List<UserVO> listUser(){
         log.debug("查询用户列表接口");
         return helloService.listUser();
+    }
+
+    /**
+     * 用feign消费服务
+     * @author cxq
+     * @date 2020/12/1
+     * @param name
+     * @return java.lang.String
+     */
+    @GetMapping(value = "/feign/hi")
+    public String sayHi(@RequestParam String name){
+        log.debug("查询用户列表接口:");
+        return userService.sayHiFromClientOne(name);
     }
 
 

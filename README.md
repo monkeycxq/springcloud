@@ -12,3 +12,4 @@ todo:
 3. 加入gateway;
 4. fastjson , shrio;
 5. mq , 定时器;
+6. 使用feign 进行服务调用;
