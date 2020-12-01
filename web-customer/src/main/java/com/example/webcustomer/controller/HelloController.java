@@ -1,6 +1,7 @@
 package com.example.webcustomer.controller;
 
 import com.example.common.util.LocalDateUtil;
+import com.example.webcustomer.domain.UserVO;
 import com.example.webcustomer.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -34,6 +36,16 @@ public class HelloController {
          return "删除成功！";
     }
 
+
+    /**
+     * 查询用户列表
+     * @return
+     */
+    @GetMapping(value = "/listUser")
+    public List<UserVO> listUser(){
+        log.debug("查询用户列表接口");
+        return helloService.listUser();
+    }
 
 
 }

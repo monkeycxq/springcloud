@@ -32,7 +32,7 @@ public class UserServiceApplication {
     public String home(@RequestParam String name){
         log.info("----进入了hi接口---：name:{}",name);
         // 让线程休眠
-        Thread.sleep(10000);
+        //Thread.sleep(10000);
 
         return "hi " + name + ",i am from port:" + port;
     }
