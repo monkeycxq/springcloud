@@ -1,9 +1,11 @@
 package com.example.webcustomer.controller;
 
 import com.example.common.util.LocalDateUtil;
-import com.example.webcustomer.domain.UserVO;
+import com.example.webcustomer.domain.ListUserForm;
 import com.example.webcustomer.service.HelloService;
+import com.example.webcustomer.service.OuterService;
 import com.example.webcustomer.service.UserService;
+import feign.Feign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -24,6 +25,8 @@ public class HelloController {
 
     @Autowired
     UserService userService;
+
+    final String listUserUrl = "http://106.52.132.48:8081/basic_project/?status=0";
 
     @GetMapping(value = "/hi")
     public String hi(@RequestParam String name){
@@ -46,9 +49,12 @@ public class HelloController {
      * @return
      */
     @GetMapping(value = "/listUser")
-    public List<UserVO> listUser(){
+    public String listUser(){
         log.debug("查询用户列表接口");
-        return helloService.listUser();
+        ListUserForm userForm = new ListUserForm();
+        userForm.setStatus("0");
+        log.debug("查询用户猎列表入参：{}",userForm.toString());
+        return Feign.builder().target(OuterService.class,listUserUrl).listUser();
     }
 
     /**
