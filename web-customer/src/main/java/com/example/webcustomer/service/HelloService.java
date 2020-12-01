@@ -12,8 +12,7 @@ public class HelloService {
 
     final String USER_SERVICE = "http://service-user/";
 
-    public String hiService(String name)
-    {
+    public String hiService(String name){
         return restTemplate.getForObject(USER_SERVICE + "hi?name=" + name, String.class);
     }
 

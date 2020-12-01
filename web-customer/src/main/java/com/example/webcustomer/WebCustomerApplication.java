@@ -24,7 +24,7 @@ public class WebCustomerApplication {
     RestTemplate restTemplate() {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setReadTimeout(2000);
-        factory.setConnectTimeout(2000);
+        factory.setConnectTimeout(2000); // 超时时间配置2秒
         return new RestTemplate(factory);
     }
 }
