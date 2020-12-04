@@ -1,8 +1,11 @@
 package com.example.webcustomer.service;
 
+import com.example.webcustomer.domain.ListUserForm;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public interface OuterService {
 
@@ -31,9 +34,18 @@ public interface OuterService {
      */
     @RequestLine("GET /user/listUser")
     @Headers({"Charset: UTF-8"})
-    String listUser();
+    String listUser(String status);
 
 
-
-
+    /**
+     * 撤回流程
+     * @author cxq
+     * @date 2020/12/4
+     * @param
+     * @return java.lang.String
+     */
+    //@RequestLine("POST /service/proc/{procInstanceId}/task/{taskId}/withdraw")
+    @RequestLine("POST /withdraw")
+    @Headers({"X-Tenant-ID: etm", "Charset: UTF-8"})
+    String withdraw(String data);
 }

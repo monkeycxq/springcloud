@@ -19,7 +19,7 @@ public class GlobalException {
 
     @ExceptionHandler(RuntimeException.class)
     public ResultVO<String> RunTimeExceptionHandle(RuntimeException e){
-        log.error("----捕获到了RuntimeException异常----");
+        log.error("----捕获到了RuntimeException异常----:{}",e);
         return new ResultVO(ResultCode.ERROR,e.getMessage(),null);
     }
 
@@ -37,7 +37,7 @@ public class GlobalException {
     @ExceptionHandler(APIException.class)
     public ResultVO<String> APIExceptionHandler(APIException e) {
         // 注意哦，这里返回类型是自定义响应体
-        return new ResultVO<>(ResultCode.FAILED, e.getMsg());
+        return new ResultVO<>(ResultCode.FAILED, e.getMsg(),null);
     }
 
 

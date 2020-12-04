@@ -55,6 +55,19 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <!-- unirest 是一个轻量级的 HTTP 请求库,可发起 GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS 请求。 -->
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.5.00</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

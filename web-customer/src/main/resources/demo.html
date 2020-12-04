@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function() {
+            var settings = {
+                "url": "https://s-pc.csair.com/service/proc/2012040000016/task/50d7d385-35e0-11eb-bfc7-66dea233e2f5/withdraw?userCode=707505",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "X-Tenant-ID": "etm",
+                    "Content-Type": "text/plain"
+                },
+                "data": "{\"comment\":\"测试撤回\"}",
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        });
+    </script>
+</head>
+<body>
+123
+</body>
+</html>
