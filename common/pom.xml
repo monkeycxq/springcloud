@@ -58,6 +58,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
         </dependency>
 
         <!-- unirest 是一个轻量级的 HTTP 请求库,可发起 GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS 请求。 -->

@@ -32,4 +32,10 @@ public class ResultVO<T> {
         this.msg = msg;
         this.data = data;
     }
+
+    public ResultVO(int code,  String msg,T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 }

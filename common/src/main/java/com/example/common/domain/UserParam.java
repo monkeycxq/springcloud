@@ -9,10 +9,10 @@ import javax.validation.constraints.Size;
 
 @Data
 public class UserParam {
-    private Integer id;
+    private Integer id; // 主键
 
     @NotEmpty(message = "用户姓名不能为空！")
-    private String name;
+    private String name; // 用户名
 
     @NotEmpty(message = "用户密码不能为空！")
     @Size(min = 6, max = 11, message = "密码长度必须是6-16个字符！")
