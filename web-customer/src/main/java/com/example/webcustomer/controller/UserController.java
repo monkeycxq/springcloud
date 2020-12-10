@@ -6,20 +6,25 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-
+/**
+ * 用户接口
+ * @author cxq
+ * @date 2020/12/10
+ */
 @RestController
 @Slf4j
+@RequestMapping("/api/user/")
 public class UserController {
 
     /**
      * 添加用户
      * @author cxq
      * @date 2020/12/9
-     * @param userParam
+     * @param userParam 用户对象
      * @return com.example.common.domain.UserParam
      */
-    @PostMapping("/addUser")
-    public UserParam  addUser(@RequestBody @Valid UserParam userParam){
+    @PostMapping("addUser")
+    public UserParam  addUser(@Valid @RequestBody UserParam userParam){
         return userParam;
     }
 
@@ -28,10 +33,10 @@ public class UserController {
      * 根据id查询用户
      * @author cxq
      * @date 2020/12/9
-     * @param id
+     * @param id 用户主键
      * @return com.example.common.domain.UserParam
      */
-    @GetMapping("/getUser")
+    @GetMapping("getUser")
     public UserParam  userParam(@RequestParam Integer id){
         UserParam userParam = new UserParam(12,"tome","123456","18809876543","21354872389@163.com");
         return userParam;

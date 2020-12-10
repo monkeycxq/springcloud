@@ -7,6 +7,14 @@ server:
 spring:
   application:
     name: customer-web
+  # Mvc
+  mvc:
+    static-path-pattern: /**
+    view:
+      suffix: .html
+      prefix: /
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
 
 # 日志配置
 logging:
@@ -37,7 +45,5 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
-  okhttp:
-    enabled: true
 #  hystrix:
 #    enabled: true
