@@ -14,3 +14,23 @@ todo:
 3. 加入gateway;
 4. fastjson , shrio;
 5. mq , 定时器;
+
+
+
+todo：
+ test intermediate engineer:  (do 2 of 4)
+1. create Level class (id,name,parentId)，递归输出树结构的json 对象;
+2. 读取本地图片，显示到页面;
+3. 创建一个对象Customer (id,name,age),将对象放入List,采用java8 stream api加分；
+    queryDistinctCustomer(List<Customer> customerList),返回List,报保证name,没有重复;
+    queryLargeAge(Integer age),返回Customer 对象，保证age 比输入参数大，并且为偶数,而且age 是最大的对象; 
+4. 将目录a文件 test.txt, 使用流操作 ，移到目录 b 下;
+
+数据库：
+    表结构, student_grade (id,student_name,subject_name 科目名称,subject_score 成绩) 
+     (1) 按科目名称，汇总各个科目成绩;
+     (2) 按学生名称，汇总学生总成绩，并只显示前10 名学生;
+     (3) 查出大于2门科目成绩上90分的学生;
+     
+senior engineer：
+    写一个责任链或者装饰者模式;
