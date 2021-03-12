@@ -8,6 +8,11 @@ spring:
   application:
     name: service-user
 
+  # mongoDB
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@106.52.132.48:27017/pig
+
 # 日志配置
 logging:
   level:
@@ -16,3 +21,4 @@ logging:
       example: debug
   file:
     name: F:\log\user-service.log
+

@@ -5,6 +5,7 @@
 4. 使用feign 进行服务调用
 5. 使用 unirest 请求外部接口; 
 6. 使用 JApiDocs 接口文档生成工具;
+7. 使用 mongoDB 储存数据;
 
 
 
