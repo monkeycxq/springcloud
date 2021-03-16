@@ -47,3 +47,9 @@ feign:
         loggerLevel: basic
 #  hystrix:
 #    enabled: true
+
+# 加密的盐
+jasypt:
+  encryptor:
+    password: just4fun
+

@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -47,5 +49,36 @@ class WebCustomerApplicationTests {
     }
 
 
+    public String changeToJson(int id, String name, List<Long> phones,List<String> address){
+        JSONObject json = new JSONObject();
+        json.put("id",id);
+        json.put("name",name);
+        json.put("phones",phones);
+        json.put("address",address);
+        return json.toString();
+    }
+
+    @Test
+    void testToJson(){
+        int id = 1;
+        String name = "someBody";
+        List<Long> phones = new ArrayList<>();
+        phones.add(13301478523L);
+        phones.add(13301478524L);
+        List<String> address = new ArrayList<>();
+        address.add("广州");
+        address.add("上海");
+
+        String s = changeToJson(id, name, phones, address);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            log.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
+        }
+
+        log.info("s:{}",s);
+    }
 
 }

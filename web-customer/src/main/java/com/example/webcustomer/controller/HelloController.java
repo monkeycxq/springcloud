@@ -7,6 +7,7 @@ import com.example.webcustomer.service.UserService;
 import feign.Feign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,11 +28,15 @@ public class HelloController {
 
     final String listUserUrl = "http://106.52.132.48:8081/basic_project/";
 
+    @Value("${jasypt.encryptor.password}")
+    private String salt;
+
     @GetMapping(value = "/hi")
     public String hi(@RequestParam String name){
         Date date = new Date();
         LocalDate localDate = LocalDateUtil.dateToLocalDate(date);
         log.debug("localDate:{}",localDate);
+        log.info("salt:{}",salt);
         return helloService.hiService(name);
     }
 
