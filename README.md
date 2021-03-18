@@ -16,6 +16,8 @@ todo:
 3. 加入gateway;
 4. shrio;
 5. mq , 定时器;
+6. 登录拦截器，token;
+
 
 
 
