@@ -7,6 +7,7 @@
     <groupId>com.test</groupId>
     <artifactId>springcloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>springcloud</name>
     <description>ETM parent project for Spring Cloud</description>
