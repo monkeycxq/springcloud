@@ -70,10 +70,10 @@ public class UserController {
      * @date 2020/12/9
      * @return com.example.common.domain.UserParam
      */
-    @GetMapping("getUserlist")
-    public List<UserParam>  getUserlist(){
+    @GetMapping("getUserList")
+    public List<UserParam>  getUserList(){
         List<Object> user = redisUtil.lGet("user", 0, -1);
-        if(!CollectionUtils.isEmpty(user)) {
+        if(CollectionUtils.isEmpty(user)) {
             return new ArrayList<>();
         }
         List<UserParam> userList = JSON.parseArray(JSON.toJSONString(user),UserParam.class);

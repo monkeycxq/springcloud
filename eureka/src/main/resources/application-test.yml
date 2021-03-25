@@ -1,0 +1,10 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: 106.52.132.48
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+serviceUrl:
+  defaultZone: http://eureka.instance.hostname:{eureka.instance.hostname}:eureka.instance.hostname:{server.port}/eureka/

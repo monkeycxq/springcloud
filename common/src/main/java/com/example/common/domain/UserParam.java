@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 
 
-public class UserParam {
+public class UserParam{
     private Integer id; // 主键
 
     @NotEmpty(message = "用户姓名不能为空！")
@@ -31,6 +31,8 @@ public class UserParam {
         this.phone = phone;
         this.email = email;
     }
+
+    public UserParam(){}
 
     public Integer getId() {
         return id;

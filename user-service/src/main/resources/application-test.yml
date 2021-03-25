@@ -1,24 +1,14 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-server:
-  port: 8801
-spring:
-  application:
-    name: service-user
-
-  # mongoDB
-  data:
-    mongodb:
-      uri: mongodb://admin:123456@106.52.132.48:27017/pig
+      defaultZone: http://106.52.132.48:8761/eureka/
 
 # 日志配置
 logging:
   level:
     # 指定路径配置log级别
     com:
-      example: debug
+      example: info
   file:
     name: /opt/jar/springcloud/log/user-service.log
 

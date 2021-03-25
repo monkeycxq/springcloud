@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# 日志配置
+logging:
+  level:
+    # 指定路径配置log级别
+    com:
+      example: debug
+  file:
+    name: F:\log\user-service.log
+

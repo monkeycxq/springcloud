@@ -12,7 +12,6 @@
 
 
 todo:
-1. 加入redis;
 2. 加入mybatis、mysql;
 3. 加入gateway;
 4. shrio;
