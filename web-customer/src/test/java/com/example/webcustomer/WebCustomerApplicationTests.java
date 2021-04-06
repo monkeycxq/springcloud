@@ -31,7 +31,7 @@ class WebCustomerApplicationTests {
      */
     @Test
     void testWithdraw(){
-        String url = "https://s-pc.csair.com/service/proc/2012040000016/task/50d7d385-35e0-11eb-bfc7-66dea233e2f5/withdraw?userCode=707505";
+       /* String url = "https://s-pc.csair.com/service/proc/2012040000016/task/50d7d385-35e0-11eb-bfc7-66dea233e2f5/withdraw?userCode=707505";
         Map<String,String> headers = new HashMap<>();
         headers.put("X-Tenant-ID","etm");
         headers.put("Content-Type","text/plain");
@@ -45,40 +45,10 @@ class WebCustomerApplicationTests {
         }else{
             ResultVO resultVO = JSON.parseObject(responseBody, ResultVO.class);
             log.info("resultVO:{}",JSON.toJSONString(resultVO));
-        }
+        }*/
     }
 
 
-    public String changeToJson(int id, String name, List<Long> phones,List<String> address){
-        JSONObject json = new JSONObject();
-        json.put("id",id);
-        json.put("name",name);
-        json.put("phones",phones);
-        json.put("address",address);
-        return json.toString();
-    }
 
-    @Test
-    void testToJson(){
-        int id = 1;
-        String name = "someBody";
-        List<Long> phones = new ArrayList<>();
-        phones.add(13301478523L);
-        phones.add(13301478524L);
-        List<String> address = new ArrayList<>();
-        address.add("广州");
-        address.add("上海");
-
-        String s = changeToJson(id, name, phones, address);
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            log.error(e.getMessage(), e);
-            Thread.currentThread().interrupt();
-        }
-
-        log.info("s:{}",s);
-    }
 
 }
