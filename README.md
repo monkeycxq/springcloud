@@ -8,6 +8,7 @@
 7. 使用 mongoDB 储存数据;
 8. 使用jasypt加密；
 9. 使用redis;
+10. nacos 替换eureka;
 
 
 

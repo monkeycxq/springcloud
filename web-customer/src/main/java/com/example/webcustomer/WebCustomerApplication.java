@@ -4,6 +4,7 @@ import io.github.yedaxia.apidocs.Docs;
 import io.github.yedaxia.apidocs.DocsConfig;
 import io.github.yedaxia.apidocs.Ignore;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,6 +15,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 //表明自己是消费者
@@ -37,6 +42,21 @@ public class WebCustomerApplication {
         config.setDocsPath("D:\\studyPro\\springcloud\\web-customer\\src\\main\\resources\\static"); // 生成API 文档所在目录
         config.setAutoGenerate(Boolean.TRUE);  // 配置自动生成
         Docs.buildHtmlDocs(config); // 执行生成文档*/
+    }
+
+
+    @RestController
+    public class TestController {
+
+        private final RestTemplate restTemplate;
+
+        @Autowired
+        public TestController(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+
+        @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
+        public String echo(@PathVariable String str) {
+            return restTemplate.getForObject("http://service-user/echo/" + str, String.class);
+        }
     }
 
     @Bean

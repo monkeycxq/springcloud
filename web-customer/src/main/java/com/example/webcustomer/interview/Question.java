@@ -1,8 +1,8 @@
 package com.example.webcustomer.interview;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.jettison.json.JSONException;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;

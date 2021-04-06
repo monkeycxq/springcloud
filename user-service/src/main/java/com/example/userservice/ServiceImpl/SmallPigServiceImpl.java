@@ -3,12 +3,12 @@ package com.example.userservice.ServiceImpl;
 import com.example.userservice.domain.SmallPig;
 import com.example.userservice.service.SmallPigService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class SmallPigServiceImpl implements SmallPigService {
     @Override
     public List<SmallPig> queryPage(SmallPig smallPig, Integer pageNo, Integer pageSize) {
         Query query = new Query();
-        if(StringUtils.isNotEmpty(smallPig.getName())){
+        if(!StringUtils.isEmpty(smallPig.getName())){
             query.addCriteria(Criteria.where("name").is(smallPig.getName()));
         }
         int skip = (pageNo - 1) * pageSize;

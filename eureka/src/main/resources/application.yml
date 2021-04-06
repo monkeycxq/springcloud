@@ -1,7 +1,0 @@
-spring:
-  # Default active profile
-  profiles:
-    active: dev
-
-  application:
-    name: eureka

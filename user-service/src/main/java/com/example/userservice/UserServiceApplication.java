@@ -5,14 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-@EnableEurekaClient //表明自己属于一个生产者
+@EnableDiscoveryClient
 @SpringBootApplication
 @RestController
 @Slf4j
@@ -27,6 +28,14 @@ public class UserServiceApplication {
 
     @Value("${server.port}")
     String port;
+
+    @RestController
+    class EchoController {
+        @RequestMapping(value = "/echo/{string}", method = RequestMethod.GET)
+        public String echo(@PathVariable String string) {
+            return "Hello Nacos Discovery " + string;
+        }
+    }
 
     @SneakyThrows
     @RequestMapping("/hi")
