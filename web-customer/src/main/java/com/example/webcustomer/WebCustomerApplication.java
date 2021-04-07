@@ -45,7 +45,7 @@ public class WebCustomerApplication {
     }
 
 
-    @RestController
+   /* @RestController
     public class TestController {
 
         private final RestTemplate restTemplate;
@@ -57,7 +57,7 @@ public class WebCustomerApplication {
         public String echo(@PathVariable String str) {
             return restTemplate.getForObject("http://service-user/echo/" + str, String.class);
         }
-    }
+    }*/
 
     @Bean
     @LoadBalanced

@@ -29,13 +29,13 @@ public class UserServiceApplication {
     @Value("${server.port}")
     String port;
 
-    @RestController
+   /* @RestController
     class EchoController {
         @RequestMapping(value = "/echo/{string}", method = RequestMethod.GET)
         public String echo(@PathVariable String string) {
             return "Hello Nacos Discovery " + string;
         }
-    }
+    }*/
 
     @SneakyThrows
     @RequestMapping("/hi")
