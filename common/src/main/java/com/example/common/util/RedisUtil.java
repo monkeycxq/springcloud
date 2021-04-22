@@ -162,7 +162,7 @@ public class RedisUtil {
      * 递减
      *
      * @param key   键
-     * @param delta 要减少几(小于0)
+     * @param delta 要减少几(大于0)
      * @return
      *
      */
@@ -170,7 +170,7 @@ public class RedisUtil {
         if (delta < 0) {
             throw new RuntimeException("递减因子必须大于0");
         }
-        return redisTemplate.opsForValue().increment(key, -delta);
+        return redisTemplate.opsForValue().decrement(key, delta);
     }
 
     // ================================Map=================================

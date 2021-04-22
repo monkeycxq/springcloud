@@ -16,7 +16,7 @@ public class JasyptTest {
         textEncryptor.setPassword("just4fun");
         //要加密的数据（数据库的用户名或密码）
         String username = textEncryptor.encrypt("root");
-        String password = textEncryptor.encrypt("123456");
+        String password = textEncryptor.encrypt("just4fun");
         System.out.println("username:" + username);
         System.out.println("password:" + password);
 
