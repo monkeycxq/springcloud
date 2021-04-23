@@ -8,6 +8,19 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+  # redis
+  redis:
+    database: 0
+    host: 106.52.132.48
+    port: 6379
+    password: ENC(VPSapwY1AJzmHZQjWq62KpBiMDu7W37M)
+    timeout: 60000
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 10000
+        max-idle: 30
+        min-idle: 10
 
 # 日志配置
 logging:

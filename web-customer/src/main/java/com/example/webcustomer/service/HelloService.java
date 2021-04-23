@@ -43,23 +43,32 @@ public class HelloService {
     }
 
 
+    /**
+     * 测试 redis 分布式锁
+     * @author cxq
+     * @date 2021/4/23
+     * @param
+     * @return java.lang.Integer
+     */
     public Integer visitNumINC(){
         int visitNum2 = 0;
 
         String lockKey = "redisLock-visitNum";
         RLock lock = redissonClient.getLock(lockKey);
         try {
-            boolean res = lock.tryLock(10, TimeUnit.SECONDS);
-            if (res) {
-                String key = "visitNum";
-                int visitNum1 = (Integer) redisUtil.get(key);
-                log.info("新增前 visitNum:{}", visitNum1);
-                redisUtil.set(key, visitNum1 + 1);
-                visitNum2 = (Integer) redisUtil.get(key);
-                log.info("新增后：visitNum:{}", visitNum2);
+            lock.lock(2,TimeUnit.SECONDS);
+            String key = "visitNum";
+            Object visitNum = redisUtil.get(key);
+            int visitNum1 = 0;
+            if(visitNum != null){
+                visitNum1 = (Integer) visitNum;
             }
-
-        } catch (InterruptedException e) {
+            log.info("新增前 visitNum:{}", visitNum1);
+            redisUtil.set(key, visitNum1 + 1);
+            visitNum2 = (Integer) redisUtil.get(key);
+            log.info("新增后：visitNum:{}", visitNum2);
+        } catch (Exception e) {
+            log.error("递增失败！");
             e.printStackTrace();
         } finally {
             lock.unlock();
