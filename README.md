@@ -27,7 +27,7 @@ todo：
 1. create Level class (id,name,parentId)，递归输出树结构的json 对象;
 2. 读取本地图片，显示到页面;
 3. 创建一个对象Customer (id,name,age),将对象放入List,采用java8 stream api加分；
-    queryDistinctCustomer(List<Customer> customerList),返回List,报保证name,没有重复;
+    queryDistinctCustomer(List<Customer> customerList),返回List,并保证name,没有重复;
     queryLargeAge(Integer age),返回Customer 对象，保证age 比输入参数大，并且为偶数,而且age 是最大的对象; 
 4. 将目录a文件 test.txt, 使用流操作 ，移到目录 b 下;
 
