@@ -13,6 +13,8 @@ public enum ResultCode {
 
     VALIDATE_FAILED(1002, "参数校验失败"),
 
+    EXPIRED_TOKEN(1003, "token过期"),
+
     ERROR(5000, "未知错误"),
     UNKNOW(500, "未知错误");
 

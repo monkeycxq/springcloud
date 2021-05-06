@@ -17,7 +17,7 @@ todo:
 2. 加入mybatis、mysql;
 3. 加入gateway;
 4. shrio;
-5. mq , 定时器;
+5. 定时器;
 6. 登录拦截器，token;
 
 

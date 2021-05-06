@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @authoe cxq
+ * @author cxq
  * @date 2021/4/25
  * 消费 rabitmq 消息监听器
  */

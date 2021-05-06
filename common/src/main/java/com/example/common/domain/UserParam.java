@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 
 public class UserParam{
-    private Integer id; // 主键
+    private Long id; // 主键
 
     @NotEmpty(message = "用户姓名不能为空！")
     private String name; //用户名（必须）
@@ -24,7 +24,7 @@ public class UserParam{
     @Email(message = "邮箱格式不正确！")
     private String email; //邮箱（必须）
 
-    public UserParam(Integer id, String name,String password, String phone,  String email) {
+    public UserParam(Long id, String name,String password, String phone,  String email) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -34,11 +34,11 @@ public class UserParam{
 
     public UserParam(){}
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

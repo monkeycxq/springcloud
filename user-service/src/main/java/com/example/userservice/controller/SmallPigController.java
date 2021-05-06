@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @authoe cxq
+ * @author cxq
  * @date 2021/3/12
  */
 @RequestMapping("/smallPig/")
