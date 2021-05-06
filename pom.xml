@@ -47,6 +47,12 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>2.2.5.RELEASE</version>
         </dependency>
+
+        <!--、amqp高级消息队列的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

@@ -6,6 +6,12 @@ spring:
   # Default active profile
   profiles:
     active: dev
+  rabbitmq:
+    host: 106.52.132.48
+    port: 5672
+    virtual-host: my_vhost
+    username: admin
+    password: admin
 
   # mongoDB
   data:

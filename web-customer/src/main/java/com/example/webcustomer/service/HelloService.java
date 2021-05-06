@@ -1,5 +1,8 @@
 package com.example.webcustomer.service;
 
+import com.alibaba.fastjson.JSON;
+import com.example.common.domain.UserParam;
+import com.example.common.exception.APIException;
 import com.example.common.util.RedisUtil;
 import com.example.webcustomer.util.RestHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -7,8 +10,13 @@ import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -75,6 +83,28 @@ public class HelloService {
         }
 
         return visitNum2;
+    }
+
+
+    /**
+     * 增加 user 到 redis
+     * @author cxq
+     * @date 2021/4/25
+     * @param userParam
+     * @return com.example.common.domain.UserParam
+     */
+    public UserParam addUser(@Valid @RequestBody UserParam userParam){
+        List<Object> user = redisUtil.lGet("user", 0, -1);
+        if(!CollectionUtils.isEmpty(user)){
+            List<UserParam> userList = JSON.parseArray(JSON.toJSONString(user),UserParam.class);
+            Optional<UserParam> first = userList.stream().filter(o -> o.getName().equals(userParam.getName())).findFirst();
+            if(first.isPresent()){
+                throw new APIException("名字重复！");
+            }
+        }
+        redisUtil.lSet("user",userParam);
+        log.info("添加数据到缓存：{}",JSON.toJSON(userParam));
+        return userParam;
     }
 
 }

@@ -7,8 +7,9 @@
 6. 使用 JApiDocs 接口文档生成工具;
 7. 使用 mongoDB 储存数据;
 8. 使用jasypt加密；
-9. 使用redis;
+9. 使用redis，及分布式锁;
 10. nacos 替换eureka;
+11. 使用rabbitmq;
 
 
 
