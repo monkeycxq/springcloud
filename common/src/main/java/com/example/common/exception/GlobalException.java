@@ -19,7 +19,7 @@ public class GlobalException {
 
     @ExceptionHandler(RuntimeException.class)
     public ResultVO<String> RunTimeExceptionHandle(RuntimeException e){
-        log.error("----捕获到了RuntimeException异常----:{}",e);
+        log.error("----捕获到了RuntimeException异常----:{}",e.getMessage(),e.fillInStackTrace());
         return new ResultVO(ResultCode.ERROR,e.getMessage(),null);
     }
 

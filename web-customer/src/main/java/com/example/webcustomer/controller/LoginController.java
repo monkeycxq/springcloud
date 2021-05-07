@@ -65,6 +65,9 @@ public class LoginController {
      */
     @PostMapping("logout")
     public Boolean logout(String token){
+        if(StringUtils.isEmpty(token)){
+            throw new APIException("token不能为空！");
+        }
         Long num = redisUtil.hdel("token", token);
         log.info("退出登录，删除token：{}",num);
         return num > 0;

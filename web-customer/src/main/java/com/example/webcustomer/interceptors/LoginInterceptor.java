@@ -21,10 +21,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     private RedisUtil redisUtil;
     
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
         String token = request.getHeader("token");
         if(StringUtils.isEmpty(token)){
-            throw new APIException(ResultCode.VALIDATE_FAILED.getCode(),"非法请求!");
+            throw new APIException(ResultCode.VALIDATE_FAILED.getCode(),"无token，非法请求!");
         }
         Object user = redisUtil.hget("token", token);
         if(user == null){
