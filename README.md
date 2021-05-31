@@ -4,21 +4,45 @@
 3. 使用ribbon + restTemplate 进行服务调用;
 4. 使用feign 进行服务调用
 5. 使用 unirest 请求外部接口; 
-6. 使用 JApiDocs 接口文档生成工具;
+6. 使用 JApiDocs 接口文档生成工具;（删除了）
 7. 使用 mongoDB 储存数据;
 8. 使用jasypt加密；
 9. 使用redis，及分布式锁;
 10. nacos 替换eureka;
 11. 使用rabbitmq;
+12. 使用登录拦截器，token;
+13. ELK:Elasticsearch、Logstash 和 Kibana;（如果只是查看日志，不需要集成到项目，只需要安装这三个软件即可）
+14. shrio;
+15. 使用sentinel 限流,熔断降级;
 
 
 
 todo:
-2. 加入mybatis、mysql;
-3. 加入gateway;
-4. shrio;
+2. 加入 mybatis、mysql;
+3. 加入 gateway;
 5. 定时器;
-6. 登录拦截器，token;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

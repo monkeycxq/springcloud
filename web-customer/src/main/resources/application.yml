@@ -24,6 +24,14 @@ spring:
     username: admin
     password: admin
 
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster:
+        nodes: 106.52.132.48:9300
+        name: docker-cluster
+
 # ribbon的超时时间
 #service-user:
 #  ribbon:
@@ -46,6 +54,8 @@ feign:
         loggerLevel: basic
 #  hystrix:
 #    enabled: true
+  sentinel:
+    enabled: true
 
 # 加密的盐
 jasypt:

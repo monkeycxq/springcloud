@@ -32,8 +32,8 @@ public class HelloService {
     @Autowired
     private RedisUtil redisUtil;
 
-    @Autowired
-    private RedissonClient redissonClient;
+/*    @Autowired
+    private RedissonClient redissonClient;*/
 
 
     final String USER_SERVICE = "http://service-user/";
@@ -62,9 +62,9 @@ public class HelloService {
         int visitNum2 = 0;
 
         String lockKey = "redisLock-visitNum";
-        RLock lock = redissonClient.getLock(lockKey);
+       /* RLock lock = redissonClient.getLock(lockKey);
         try {
-            lock.lock(2,TimeUnit.SECONDS);
+            lock.lock(2,TimeUnit.SECONDS);*/
             String key = "visitNum";
             Object visitNum = redisUtil.get(key);
             int visitNum1 = 0;
@@ -75,12 +75,12 @@ public class HelloService {
             redisUtil.set(key, visitNum1 + 1);
             visitNum2 = (Integer) redisUtil.get(key);
             log.info("新增后：visitNum:{}", visitNum2);
-        } catch (Exception e) {
+       /* } catch (Exception e) {
             log.error("递增失败！");
             e.printStackTrace();
         } finally {
             lock.unlock();
-        }
+        }*/
 
         return visitNum2;
     }

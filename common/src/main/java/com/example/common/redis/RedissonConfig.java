@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Configuration;
  * @authoe cxq
  * @date 2021/4/22
  */
-@Configuration
+//@Configuration
 public class RedissonConfig {
 
     @Bean
     public RedissonClient redissonClient() {
        Config config = new Config();
-       config.useSingleServer().setAddress("redis://106.52.132.48:6379").setPassword("just4fun");
+       config.useSingleServer().setAddress("redis://localhost:6379").setPassword("just4fun");
 
        RedissonClient redisson = Redisson.create(config);
        return redisson;

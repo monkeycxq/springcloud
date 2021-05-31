@@ -32,3 +32,4 @@ logging:
     name: /opt/jar/springcloud/log/web-service.log
 
 
+login-interceptor: false
