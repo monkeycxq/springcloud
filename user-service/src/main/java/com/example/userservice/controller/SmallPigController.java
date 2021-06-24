@@ -2,20 +2,24 @@ package com.example.userservice.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.common.domain.UserParam;
 import com.example.userservice.domain.SmallPig;
 import com.example.userservice.service.SmallPigService;
 import com.example.userservice.util.MongodbUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @authoe cxq
+ * @author cxq
  * @date 2021/3/12
  */
 @RequestMapping("/smallPig/")
@@ -30,6 +34,9 @@ public class SmallPigController {
     private MongodbUtil mongodbUtil;
 
     final private String TABLE = "small_pig";
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @PostMapping("save")
     public void save(SmallPig smallPig){
@@ -73,6 +80,17 @@ public class SmallPigController {
         return jsonObject;
     }
 
+    /**
+     * 发送消息 rabbitmq
+     * @author cxq
+     * @date 2021/4/25
+     * @param userParam
+     * @return void
+     */
+    @PostMapping("sendAddUser")
+    public void sendAddUser(@Valid @RequestBody UserParam userParam){
+        rabbitTemplate.convertAndSend("addUser",userParam);
+    }
 
 
 }

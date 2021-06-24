@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @authoe cxq
  * @date 2021/4/22
  */
-@Configuration
+//@Configuration
 public class RedissonConfig {
 
     @Bean

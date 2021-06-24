@@ -6,21 +6,37 @@ import com.example.common.exception.APIException;
 import com.example.common.thread.ThreadPoolExecutorUtil;
 import com.example.common.util.RedisUtil;
 import com.example.webcustomer.domain.ShopVo;
+import com.example.webcustomer.service.EsDao;
 import com.example.webcustomer.service.HelloService;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.SearchType;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 用户接口
@@ -37,6 +53,9 @@ public class UserController {
 
     @Autowired
     HelloService helloService;
+
+    @Autowired
+    private EsDao esDao;
 
     /**
      * 添加用户
@@ -70,7 +89,7 @@ public class UserController {
      */
     @GetMapping("getUser")
     public UserParam  getUser(@RequestParam Integer id){
-        UserParam userParam = new UserParam(12,"tome","123456","18809876543","21354872389@163.com");
+        UserParam userParam = new UserParam(12L,"tome","123456","18809876543","21354872389@163.com");
 
         return userParam;
     }
@@ -164,6 +183,27 @@ public class UserController {
         }
         Integer visitNum = (Integer)redisUtil.get(key);
         return visitNum;
+    }
+
+    // 测试ES
+
+    //更新es服务器数据
+    @RequestMapping("addEs")
+    public boolean addShopEs() {
+        List<Object> objectList = redisUtil.lGet("shop", 0, -1);
+        List<ShopVo> shopList = JSON.parseArray(JSON.toJSONString(objectList),ShopVo.class);
+        ShopVo shop = new ShopVo();
+        try {
+            for (int i = 0; i < shopList.size(); i++) {
+                shop.setId(shopList.get(i).getId());
+                shop.setName(shopList.get(i).getName());
+                esDao.save(shop);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
