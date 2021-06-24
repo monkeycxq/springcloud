@@ -6,7 +6,7 @@
 5. 使用 unirest 请求外部接口; 
 6. 使用 JApiDocs 接口文档生成工具;（删除了）
 7. 使用 mongoDB 储存数据;
-8. 使用jasypt加密；
+8. 使用jasypt加密配置文件中的密码；
 9. 使用redis，及分布式锁;
 10. nacos 替换eureka;
 11. 使用rabbitmq;
@@ -18,9 +18,11 @@
 
 
 todo:
+1. 加入java加密技术：用户密码可用MD5、敏感信息用AES；
 2. 加入 mybatis、mysql;
 3. 加入 gateway;
 5. 定时器;
+
 
 
 
