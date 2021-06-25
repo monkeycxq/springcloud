@@ -18,6 +18,8 @@
 
 
 todo:
+1. 加入java加密技术：用户密码可用MD5、敏感信息用AES；
+2. 加入 mybatis、mysql;
 2. 加入 gateway;
 3. 定时器;
 4. 分布式事务框架 Seata;
@@ -45,6 +47,8 @@ dubbo LB、seata;
 8. 异步消息：RocketMQ，阿里开源，交由Apache孵化
 
 9. 链路跟踪：Skywalking，华为开源，交由Apache孵化
+
+
 
 10. 分布式缓存：Redis，基础数据缓存
 
