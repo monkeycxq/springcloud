@@ -1,13 +1,14 @@
 package com.example.webcustomer.util;
 
-import com.example.common.exception.APIException;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-
+/**
+ * MD5加密工具类
+ * @author cxq
+ * @date 2021/6/25
+ */
 public class MD5Util {
     //用来将字节转换成16进制表示的字符
     private static char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6',
@@ -52,11 +53,7 @@ public class MD5Util {
      * @return MD5值
      */
     public static String getMD5(String str) {
-        try {
-            return getMD5(str.getBytes("GBK"));
-        } catch (UnsupportedEncodingException e) {
-            throw new APIException("MD5加密异常");
-        }
+        return getMD5(str.getBytes());
     }
 
     /**
@@ -77,14 +74,14 @@ public class MD5Util {
             BigInteger bigInt = new BigInteger(1, md.digest());
             result = bigInt.toString(16);
         } catch (Exception e) {
-            throw new APIException("MD5加密异常");
+            throw new RuntimeException("MD5加密异常");
         } finally {
             try {
                 if (in != null) {
                     in.close();
                 }
             } catch (Exception e) {
-                throw new APIException("MD5加密时，流关闭异常");
+                throw new RuntimeException("MD5加密时，流关闭异常");
             }
         }
         return result;
@@ -101,7 +98,7 @@ public class MD5Util {
     }
 
     public static void  main(String[] arg){
-        String md5 = getMD5("!@#,./");
+        String md5 = getMD5("111111");
         System.out.println(md5);
     }
 }

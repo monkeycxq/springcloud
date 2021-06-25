@@ -62,6 +62,10 @@ jasypt:
   encryptor:
     password: just4fun
 
+# des算法的key
+des:
+  key: 12345678
+
 # 线程参数
 task:
   pool:
