@@ -3,14 +3,17 @@ package com.example.webcustomer;
 import com.example.webcustomer.util.AESUtil;
 import com.example.webcustomer.util.DESUtil;
 import com.example.webcustomer.util.MD5Util;
+import lombok.extern.slf4j.Slf4j;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @authoe cxq
  * @date 2021/3/15
  */
+@SpringBootTest
+@Slf4j
 public class JasyptTest {
 
     @Test
@@ -46,22 +49,21 @@ public class JasyptTest {
         System.out.println("md5:" + md5);//54489653fb9e8da76c4dbd03bda11ac2
     }
 
-    @Autowired
-    DESUtil desUtil;
 
     @Test
     public void testDes() throws Exception {
-        String pwd = desUtil.desEncode( "123456");
+        String pwd = DESUtil.desEncode( "just4fun");
         System.out.println("密文:" + pwd);
 
-        String pwd2 = desUtil.desEncode("root");
+        String pwd2 = DESUtil.desEncode("1314bpqbfq,./^&*()(=-");
         System.out.println("密文2:" + pwd2);
 
-        String s = desUtil.desDecode(pwd);
+        String s = DESUtil.desDecode(pwd);
         System.out.println("明文:" + s);
 
-        String s2 = desUtil.desDecode(pwd2);
+        String s2 = DESUtil.desDecode(pwd2);
         System.out.println("明文2:" + s2);
+
     }
 
 }

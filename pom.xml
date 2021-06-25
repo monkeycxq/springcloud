@@ -53,11 +53,11 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
-<!--        sentinel-->
-        <dependency>
+<!--        sentinel (影响test)-->
+<!--        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
