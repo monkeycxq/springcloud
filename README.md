@@ -18,10 +18,43 @@
 
 
 todo:
-2. 加入 mybatis、mysql;
-3. 加入 gateway;
-5. 定时器;
+2. 加入 gateway;
+3. 定时器;
+4. 分布式事务框架 Seata;
+5. docker 部署spring cloud;
+6. 日志剧增，空间不足问题；
+7. 是用Spring cloud alibaba的其他组件，nacos、sentinel、dubbo RPC、dubbo proxy、SCS RocketMQ、
+dubbo LB、seata;
 
+可能会使用到的技术栈：
+
+1. 反向代理：nginx，可做动静分离部署
+
+2. 统一网关：基于spring-cloud-gateway，配合JWT进行的简单的验权操作
+
+3. 分布式事务：Spring Cloud Alibaba Seata，阿里内部分布式事务产品不断迭代演进而来。
+
+4. 降级、限流：hysrix/Spring Cloud Alibaba Sentinel
+
+5. 服务注册\发现：Spring Cloud Alibaba Nacos
+
+6. 分布式配置中心：Spring Cloud Alibaba Nacos
+
+7. 客户端负载均衡：openFeign
+
+8. 异步消息：RocketMQ，阿里开源，交由Apache孵化
+
+9. 链路跟踪：Skywalking，华为开源，交由Apache孵化
+
+10. 分布式缓存：Redis，基础数据缓存
+
+11. 健康监控：spring-boot-admin
+
+12. 分布式锁：Redission
+
+13. 代码简化：Lambok，mybatis-plus，mybatis-generator
+
+14. RPC框架：apache dubbo
 
 
 

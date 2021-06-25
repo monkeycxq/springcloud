@@ -18,3 +18,9 @@ spring:
     mongodb:
       uri: mongodb://admin:123456@106.52.132.48:27017/pig
 
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.52.132.48:3306/sb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: just4fun

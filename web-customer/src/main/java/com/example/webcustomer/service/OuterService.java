@@ -1,11 +1,8 @@
 package com.example.webcustomer.service;
 
-import com.example.webcustomer.domain.ListUserForm;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 public interface OuterService {
 
