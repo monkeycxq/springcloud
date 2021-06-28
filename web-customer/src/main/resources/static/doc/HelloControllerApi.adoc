@@ -1,0 +1,135 @@
+
+== 
+=== 
+*URL:* `/hi`
+
+*Type:* `GET`
+
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|name|string|No comments found.|true|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X GET -i /hi?name=鸿煊.汪
+----
+
+
+*Response-example:*
+----
+string
+----
+
+=== 
+*URL:* `/delete`
+
+*Type:* `POST`
+
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int32|No comments found.|true|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X POST -i /delete --data 'id=250'
+----
+
+
+*Response-example:*
+----
+string
+----
+
+=== 用feign消费服务(内部服务)
+*URL:* `/feign/hi`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 用feign消费服务(内部服务)
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|name|string|No comments found.|true|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X GET -i /feign/hi?name=鸿煊.汪
+----
+
+
+*Response-example:*
+----
+string
+----
+
+=== 
+*URL:* `/withdraw`
+
+*Type:* `POST`
+
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+|====================
+
+
+
+
+
+*Request-example:*
+----
+curl -X POST -i /withdraw
+----
+
+
+*Response-example:*
+----
+string
+----
+

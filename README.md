@@ -14,11 +14,12 @@
 13. ELK:Elasticsearch、Logstash 和 Kibana;（如果只是查看日志，不需要集成到项目，只需要安装这三个软件即可）
 14. shrio;
 15. 使用sentinel 限流,熔断降级;
+16. 使用smart-doc 接口文档生成工具;
+17.加入java加密技术：用户密码可用MD5、敏感信息用AES
 
 
 
 todo:
-1. 加入java加密技术：用户密码可用MD5、敏感信息用AES；
 2. 加入 mybatis、mysql;
 2. 加入 gateway;
 3. 定时器;

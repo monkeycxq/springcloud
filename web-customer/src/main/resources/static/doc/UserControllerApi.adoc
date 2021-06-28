@@ -1,0 +1,546 @@
+
+== 用户接口
+=== 添加用户
+*URL:* `/api/user/addUser`
+
+*Type:* `POST`
+
+*Author:* cxq
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 添加用户
+
+|====================
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int64|No comments found.|false|-
+|name|string|No comments found.|true|-
+|password|string|No comments found.|true|-
+|phone|string|No comments found.|true|-
+|email|string|No comments found.|true|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /api/user/addUser --data '{
+	"id": 776,
+	"name": "鸿煊.汪",
+	"password": "ef9xak",
+	"phone": "15139272790",
+	"email": "擎苍.洪@hotmail.com"
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int64|No comments found.|-
+|name|string|No comments found.|-
+|password|string|No comments found.|-
+|phone|string|No comments found.|-
+|email|string|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+{
+	"id": 433,
+	"name": "鸿煊.汪",
+	"password": "rvwmcp",
+	"phone": "15139272790",
+	"email": "擎苍.洪@hotmail.com"
+}
+----
+
+=== 根据id查询用户
+*URL:* `/api/user/getUser`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 根据id查询用户
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int32|用户主键|true|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X GET -i /api/user/getUser?id=317
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int64|No comments found.|-
+|name|string|No comments found.|-
+|password|string|No comments found.|-
+|phone|string|No comments found.|-
+|email|string|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+{
+	"id": 183,
+	"name": "鸿煊.汪",
+	"password": "wrfnum",
+	"phone": "15139272790",
+	"email": "擎苍.洪@hotmail.com"
+}
+----
+
+=== 查询所有用户
+*URL:* `/api/user/getUserList`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 查询所有用户
+
+|====================
+
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i /api/user/getUserList
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int64|No comments found.|-
+|name|string|No comments found.|-
+|password|string|No comments found.|-
+|phone|string|No comments found.|-
+|email|string|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+[
+	{
+		"id": 514,
+		"name": "鸿煊.汪",
+		"password": "4s4wj8",
+		"phone": "15139272790",
+		"email": "擎苍.洪@hotmail.com"
+	}
+]
+----
+
+=== 添加店铺
+*URL:* `/api/user/addShop`
+
+*Type:* `POST`
+
+*Author:* cxq
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 添加店铺
+
+|====================
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int32|No comments found.|false|-
+|name|string|No comments found.|false|-
+|code|string|No comments found.|false|-
+|createDate|string|No comments found.|false|-
+|productList|array|No comments found.|false|-
+|└─id|int32|No comments found.|false|-
+|└─name|string|No comments found.|false|-
+|└─code|string|No comments found.|false|-
+|└─price|number|No comments found.|false|-
+|└─comment|string|No comments found.|false|-
+|└─typeDO|object|No comments found.|false|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─id|int32|No comments found.|false|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─name|string|No comments found.|false|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─code|string|No comments found.|false|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─level|int32|No comments found.|false|-
+|fansList|array|No comments found.|false|-
+|└─id|int32|No comments found.|false|-
+|└─name|string|No comments found.|false|-
+|└─code|string|No comments found.|false|-
+|└─phone|string|No comments found.|false|-
+|└─age|int32|No comments found.|false|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /api/user/addShop --data '{
+	"id": 360,
+	"name": "鸿煊.汪",
+	"code": "32506",
+	"createDate": "2021-06-28",
+	"productList": [
+		{
+			"id": 593,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"price": 649,
+			"comment": "nmwgq1",
+			"typeDO": {
+				"id": 402,
+				"name": "鸿煊.汪",
+				"code": "32506",
+				"level": 17
+			}
+		}
+	],
+	"fansList": [
+		{
+			"id": 533,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"phone": "15139272790",
+			"age": 28
+		}
+	]
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int32|No comments found.|-
+|name|string|No comments found.|-
+|code|string|No comments found.|-
+|createDate|string|No comments found.|-
+|productList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─price|number|No comments found.|-
+|└─comment|string|No comments found.|-
+|└─typeDO|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─id|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─name|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─code|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─level|int32|No comments found.|-
+|fansList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─phone|string|No comments found.|-
+|└─age|int32|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+{
+	"id": 708,
+	"name": "鸿煊.汪",
+	"code": "32506",
+	"createDate": "2021-06-28",
+	"productList": [
+		{
+			"id": 76,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"price": 834,
+			"comment": "6jay80",
+			"typeDO": {
+				"id": 591,
+				"name": "鸿煊.汪",
+				"code": "32506",
+				"level": 362
+			}
+		}
+	],
+	"fansList": [
+		{
+			"id": 687,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"phone": "15139272790",
+			"age": 28
+		}
+	]
+}
+----
+
+=== 查询所有店铺
+*URL:* `/api/user/getShopList`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 查询所有店铺
+
+|====================
+
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i /api/user/getShopList
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int32|No comments found.|-
+|name|string|No comments found.|-
+|code|string|No comments found.|-
+|createDate|string|No comments found.|-
+|productList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─price|number|No comments found.|-
+|└─comment|string|No comments found.|-
+|└─typeDO|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─id|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─name|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─code|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─level|int32|No comments found.|-
+|fansList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─phone|string|No comments found.|-
+|└─age|int32|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+[
+	{
+		"id": 553,
+		"name": "鸿煊.汪",
+		"code": "32506",
+		"createDate": "2021-06-28",
+		"productList": [
+			{
+				"id": 919,
+				"name": "鸿煊.汪",
+				"code": "32506",
+				"price": 504,
+				"comment": "bsi5wj",
+				"typeDO": {
+					"id": 768,
+					"name": "鸿煊.汪",
+					"code": "32506",
+					"level": 118
+				}
+			}
+		],
+		"fansList": [
+			{
+				"id": 882,
+				"name": "鸿煊.汪",
+				"code": "32506",
+				"phone": "15139272790",
+				"age": 28
+			}
+		]
+	}
+]
+----
+
+=== 根据id查询店铺
+*URL:* `/api/user/getShop`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 根据id查询店铺
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int32|No comments found.|true|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X GET -i /api/user/getShop?id=994
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|id|int32|No comments found.|-
+|name|string|No comments found.|-
+|code|string|No comments found.|-
+|createDate|string|No comments found.|-
+|productList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─price|number|No comments found.|-
+|└─comment|string|No comments found.|-
+|└─typeDO|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─id|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─name|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─code|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─level|int32|No comments found.|-
+|fansList|array|No comments found.|-
+|└─id|int32|No comments found.|-
+|└─name|string|No comments found.|-
+|└─code|string|No comments found.|-
+|└─phone|string|No comments found.|-
+|└─age|int32|No comments found.|-
+|====================
+
+
+*Response-example:*
+----
+{
+	"id": 204,
+	"name": "鸿煊.汪",
+	"code": "32506",
+	"createDate": "2021-06-28",
+	"productList": [
+		{
+			"id": 835,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"price": 722,
+			"comment": "itqgiq",
+			"typeDO": {
+				"id": 664,
+				"name": "鸿煊.汪",
+				"code": "32506",
+				"level": 736
+			}
+		}
+	],
+	"fansList": [
+		{
+			"id": 728,
+			"name": "鸿煊.汪",
+			"code": "32506",
+			"phone": "15139272790",
+			"age": 28
+		}
+	]
+}
+----
+
+=== 访问次数加一
+*URL:* `/api/user/visitNumINC`
+
+*Type:* `POST`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 访问次数加一
+
+|====================
+
+
+
+
+
+*Request-example:*
+----
+curl -X POST -i /api/user/visitNumINC
+----
+
+
+*Response-example:*
+----
+387
+----
+
+=== 
+*URL:* `/api/user/addEs`
+
+*Type:* `GET`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+|====================
+
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i /api/user/addEs
+----
+
+
+*Response-example:*
+----
+true
+----
+

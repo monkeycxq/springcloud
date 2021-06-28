@@ -1,0 +1,84 @@
+
+== 
+=== 登录
+*URL:* `/sys/login`
+
+*Type:* `POST`
+
+*Author:* cxq
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 登录
+
+|====================
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int64|No comments found.|false|-
+|name|string|No comments found.|true|-
+|password|string|No comments found.|true|-
+|phone|string|No comments found.|true|-
+|email|string|No comments found.|true|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /sys/login --data '{
+	"id": 943,
+	"name": "鸿煊.汪",
+	"password": "1spqkb",
+	"phone": "15139272790",
+	"email": "擎苍.洪@hotmail.com"
+}'
+----
+
+
+*Response-example:*
+----
+string
+----
+
+=== 退出登录
+*URL:* `/sys/logout`
+
+*Type:* `POST`
+
+*Author:* cxq
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 退出登录
+
+|====================
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|token|string|No comments found.|false|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X POST -i /sys/logout --data 'token=wj4og5'
+----
+
+
+*Response-example:*
+----
+true
+----
+
