@@ -47,16 +47,14 @@ public class AESUtil {
      * @return 加密后的参数
      */
     private byte[] getEncCode(byte[] bytes) {
-        byte[] result = null;
-        Cipher cipher = null;
+        byte[] result;
+        Cipher cipher;
         try {
             cipher = Cipher.getInstance("AES");//获取算法实例
             cipher.init(Cipher.ENCRYPT_MODE, key);//初始化，入参为加密模式和秘钥
             result = cipher.doFinal(bytes);//进行加密
         } catch (Exception e) {
             throw new RuntimeException("AES加密异常");
-        } finally {
-            cipher = null;
         }
         return result;
     }

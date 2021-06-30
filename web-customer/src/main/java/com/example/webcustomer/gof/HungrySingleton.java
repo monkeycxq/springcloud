@@ -3,6 +3,9 @@ package com.example.webcustomer.gof;
 import javax.swing.*;
 import java.awt.*;
 
+import java.lang.Runtime;
+import java.text.NumberFormat;
+
 /**
  * @author cxq
  * @date 2021/5/14
@@ -38,6 +41,7 @@ public class HungrySingleton {
         jf.pack();
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }
 
@@ -51,3 +55,7 @@ class Bajie extends JPanel {
         return instance;
     }
 }
+
+
+
+// 在jdk中的应用：(1) java.lang.RunTime (2)java.text.NumberFormat

@@ -15,7 +15,7 @@
 14. shrio;
 15. 使用sentinel 限流,熔断降级;
 16. 使用smart-doc 接口文档生成工具;
-17.加入java加密技术：用户密码可用MD5、敏感信息用AES
+17. 加入java加密技术：用户密码可用MD5、敏感信息用AES
 
 
 
@@ -28,6 +28,7 @@ todo:
 6. 日志剧增，空间不足问题；
 7. 是用Spring cloud alibaba的其他组件，nacos、sentinel、dubbo RPC、dubbo proxy、SCS RocketMQ、
 dubbo LB、seata;
+8. 压力测试;
 
 可能会使用到的技术栈：
 

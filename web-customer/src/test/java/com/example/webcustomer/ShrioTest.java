@@ -1,7 +1,6 @@
 package com.example.webcustomer;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
@@ -45,5 +44,6 @@ public class ShrioTest {
         subject.logout(); // 登出
 
         System.out.println("isAuthenticated:" + subject.isAuthenticated()); // 输出false
+
     }
 }
