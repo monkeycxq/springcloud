@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class Question {
 
-    public static void  main(String[] args) throws JSONException, IOException {
+    public static void main(String[] args) throws JSONException, IOException {
         /*List<Level> children = recursion(1);
         log.info("json对象：{}", JSON.toJSON(children));*/
 
@@ -30,13 +31,15 @@ public class Question {
         log.info("json对象：{}", JSON.toJSON(customers));*/
 
         moveFile();
+
     }
 
+
     // 1. create Level class (id,name,parentId)，递归输出树结构的json 对象;
-    public static List<Level> recursion(Integer parentId){
+    public static List<Level> recursion(Integer parentId) {
         List<Level> levelList = getChildrenByParentId(parentId);
-        if(!CollectionUtils.isEmpty(levelList)){
-            levelList.stream().forEach(o ->{
+        if (!CollectionUtils.isEmpty(levelList)) {
+            levelList.stream().forEach(o -> {
                 o.setChildren(recursion(o.getId()));
             });
         }
@@ -46,14 +49,14 @@ public class Question {
     private static List<Level> getChildrenByParentId(Integer parentId) {
         ArrayList<Level> list = new ArrayList<>();
         // 查询数据库
-        if(parentId == 1){
+        if (parentId == 1) {
             Level level = new Level();
             level.setId(2);
             level.setName("tom");
             level.setParentId(1);
             list.add(level);
         }
-        if(parentId == 2){
+        if (parentId == 2) {
             Level level = new Level();
             level.setId(3);
             level.setName("lily");
@@ -69,19 +72,19 @@ public class Question {
         return list;
     }
 
-   // 2. 循环去重复
-   public static List<Customer> queryDistinctCustomer(List<Customer> oldList){
-       List<Customer> newList = new ArrayList<>();
-       oldList.forEach(o -> {
-           List<String> names = newList.stream().map(Customer::getName).collect(Collectors.toList());
-           if(!names.contains(o.getName())){
-               newList.add(o);
-           }
-       });
-       return newList;
-   }
+    // 2. 循环去重复
+    public static List<Customer> queryDistinctCustomer(List<Customer> oldList) {
+        List<Customer> newList = new ArrayList<>();
+        oldList.forEach(o -> {
+            List<String> names = newList.stream().map(Customer::getName).collect(Collectors.toList());
+            if (!names.contains(o.getName())) {
+                newList.add(o);
+            }
+        });
+        return newList;
+    }
 
-    public static List<Customer> getListCustomer(){
+    public static List<Customer> getListCustomer() {
         List<Customer> list = new ArrayList<>();
         Customer customer = new Customer();
         customer.setId(1);
@@ -119,66 +122,32 @@ public class Question {
 
     /**
      * 将目录a文件 test.txt, 使用流操作 ，移到目录 b 下;
+     *
      * @author cxq
      * @date 2021/6/30
      */
-    public static void moveFile(){
-        InputStream is = null;
-        FileOutputStream os = null;
-        try {
-            // 使用输入流读取文件
-            String sourcePath = "D:/temp/a/test.txt";
-            is = new FileInputStream(sourcePath);
+    public static void moveFile() {
+        String sourcePath = "D:/temp/a/test.txt";
+        String targetPath = "D:/temp/b/test.txt";
+        byte[] b = new byte[2048];
 
-            String targetPath = "D:/temp/b/test.txt";
-            // 使用输出流写文件
-            os = new FileOutputStream(targetPath);
-            OutputStreamWriter writer = new OutputStreamWriter(os, "UTF-8");// 解决乱码
+        // java7以后，输入输出流自动关闭的 语法糖 写法 try-with-resources
+        try (InputStream is = new FileInputStream(sourcePath);
+             FileOutputStream os = new FileOutputStream(targetPath);
+             // OutputStreamWriter是字符的桥梁流以字节流：向其写入的字符编码成使用指定的字节charset 。
+             OutputStreamWriter writer = new OutputStreamWriter(os, StandardCharsets.UTF_8)) {
 
-            byte[] b = new byte[1024];
-            while(is.read(b)> 0){
+            while (is.read(b) > 0) {
                 writer.append(new String(b));
             }
             writer.flush();// 刷新缓冲区写入到文件
-            writer.close();
-            is.close();
-            os.close();
-            log.info("移文件完成：" + targetPath);
-        }catch (FileNotFoundException e){
-            e.fillInStackTrace();
-        }catch (IOException e){
+
+            log.info("移文件完成：{}", targetPath);
+        } catch (IOException e) {
+            log.info("移文件异常：{}", e.getMessage());
             e.printStackTrace();
         }
     }
 
-    /**
-     * 将目录a文件 test.txt, 使用流操作 ，移到目录 b 下;
-     * @author cxq
-     * @date 2021/6/30
-     */
-    public static void moveFile2() throws IOException {
-        String sourcePath = "D:/temp/a/test.txt";
-        FileInputStream fip = new FileInputStream(sourcePath);
-        // 构建FileInputStream对象
-
-        InputStreamReader reader = new InputStreamReader(fip, "UTF-8");
-        // 构建InputStreamReader对象,编码与写入相同
-
-        StringBuffer sb = new StringBuffer();
-        while (reader.ready()) {
-            sb.append((char) reader.read());
-            // 转成char加到StringBuffer对象中
-        }
-
-        String targetPath = "D:/temp/b/test.txt";
-        // 使用输出流写文件
-        FileOutputStream os = new FileOutputStream(targetPath);
-        OutputStreamWriter writer = new OutputStreamWriter(os, "UTF-8");
-        writer.append(sb.toString());
-        writer.flush();// 刷新缓冲区写入到文件
-
-        // writer.close(); // 这个也会写入并关闭，那就可以不写writer.flush()
-
-        // java7以后，输入输出流自动关闭，无需再写is.close() os.close() writer.close() 也是可以的
-    }
 }
+
