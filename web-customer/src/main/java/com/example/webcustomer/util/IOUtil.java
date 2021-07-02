@@ -1,21 +1,12 @@
 package com.example.webcustomer.util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PipedReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.UUID;
 
 /**
  * @author cxq
@@ -41,12 +32,19 @@ public class IOUtil {
     public static void main(String[] arg) throws IOException {
         String srcPath = "D:/temp/a/test.txt";
         String desPath = "D:/temp/b/test.txt";
-        File srcFile = new File(srcPath);
-        //String s = testBufferedReader(srcPath);
-        //testInputStreamReader(srcPath);
-        //testFileReader(srcPath);
+        //File srcFile = new File(srcPath);
+        // String s = testBufferedReader(srcPath);
+        // testInputStreamReader(srcPath);
+        // testFileReader(srcPath);
 
-        copyFile();
+        // copyFile();
+
+        // copyTxtFile();
+
+        // 上传文件
+        InputStream in = new FileInputStream("D:/temp/a/test.doc");
+        MultipartFile file = new MockMultipartFile("testDoc.doc",in);
+        uploadFile2(file);
 
     }
 
@@ -140,10 +138,10 @@ public class IOUtil {
      */
     public static void copyFile() {
         byte[] b = new byte[1024];
-        String sourcePath = "D:/temp/a/test.java";
-        String targetPath = "D:/temp/b/test.java";
+        String sourcePath = "D:/temp/a/test.pdf";
+        String targetPath = "D:/temp/b/test.pdf";
 
-        // 语法糖
+        // 语法糖 try-with-resource
         try (InputStream is = new FileInputStream(sourcePath);
              FileOutputStream os = new FileOutputStream(targetPath) ) {
 
@@ -156,6 +154,108 @@ public class IOUtil {
             log.info("移文件完成：{}", targetPath);
         } catch (IOException e) {
             log.info("移文件异常：{}", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用IO流复制txt文件
+     * @author cxq
+     * @date 2021/7/2
+     * @return void
+     */
+    public static void copyTxtFile() {
+        String sourcePath = "D:/temp/a/test.txt";
+        String targetPath = "D:/temp/b/test.txt";
+
+        try (FileReader fr = new FileReader(new File(sourcePath));
+             FileWriter fw = new FileWriter(targetPath) ) {
+
+            while (fr.ready()) {
+                fw.write(fr.read());
+            }
+
+            log.info("移文件完成：{}", targetPath);
+        } catch (IOException e) {
+            log.info("移文件异常：{}", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 上传文件
+     * @param file
+     * @return fileName
+     */
+    public static String uploadFile(MultipartFile file) {
+        String path = "D:/temp/upload/";
+        String uuid = UUID.randomUUID().toString();
+        int index = file.getName().lastIndexOf(".");
+        String suffix = file.getName().substring(index);
+        String fileName = uuid + suffix;
+        String desFilePath = path + fileName;
+        try (InputStream in = file.getInputStream();
+             OutputStream out = new FileOutputStream(desFilePath) ) {
+            byte[] b = new byte[1024];
+            while (in.available() > 0) {
+                int length = in.available() > b.length ? b.length : in.available();
+                in.read(b,0,length);
+                out.write(b,0,length);
+            }
+
+            log.info("上传文件完成：{}", desFilePath);
+        } catch (IOException e) {
+            log.info("上传文件异常：{}", e.getMessage());
+            e.printStackTrace();
+        }
+
+        return fileName;
+    }
+
+    /**
+     * 上传文件
+     * @param file
+     * @return fileName
+     */
+    public static String uploadFile2(MultipartFile file) {
+        String path = "D:/temp/upload/";
+        String uuid = UUID.randomUUID().toString();
+        int index = file.getName().lastIndexOf(".");
+        String suffix = file.getName().substring(index);
+        String fileName = uuid + suffix;
+        String desFilePath = path + fileName;
+        File localFile = new File(desFilePath);
+        try {
+            //将文件上传到本地路径
+            file.transferTo(localFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileName;
+    }
+
+    /**
+     * 下载文件
+     * @param fileName
+     */
+    public static void downloadFile(String fileName, HttpServletResponse response){
+        String filePath = "D:/temp/upload/" + fileName;
+        File file = new File(filePath);
+        try (InputStream fis = new BufferedInputStream(new FileInputStream(file));
+             OutputStream toClient = new BufferedOutputStream(response.getOutputStream());) {
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+            response.reset();
+            // 设置response的Header
+            response.setContentType("application/x-download");
+            //指定文件的名称
+            response.addHeader("Content-Disposition","attachment;filename=" + fileName);
+            toClient.write(buffer);
+            toClient.flush();
+
+            log.info("下载文件完成：{}", fileName);
+        } catch (IOException e) {
+            log.info("下载文件异常：{}", e.getMessage());
             e.printStackTrace();
         }
     }
