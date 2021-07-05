@@ -267,7 +267,7 @@ public class IOUtil {
     public static void copyFile3() {
         // 开始时间
         long begin = System.currentTimeMillis();
-        byte[] b = new byte[1024*2];
+        byte[] b = new byte[1024*50];
         String sourcePath = "F:/temp/a/test.jar";
         String targetPath = "F:/temp/b/test2.jar";
 
@@ -298,7 +298,7 @@ public class IOUtil {
         // 开始时间
         long begin = System.currentTimeMillis();
 
-        byte[] b = new byte[1024*2];// 2kb
+        byte[] b = new byte[1024*50];// 50kb
         String sourcePath = "F:/temp/a/test.jar";
         String targetPath = "F:/temp/b/test2.jar";
 
