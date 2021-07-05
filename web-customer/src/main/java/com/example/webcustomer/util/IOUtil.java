@@ -1,12 +1,12 @@
 package com.example.webcustomer.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.UUID;
+
 
 /**
  * @author cxq
@@ -42,9 +42,13 @@ public class IOUtil {
         // copyTxtFile();
 
         // 上传文件
-        InputStream in = new FileInputStream("D:/temp/a/test.doc");
+        /*InputStream in = new FileInputStream("D:/temp/a/test.doc");
         MultipartFile file = new MockMultipartFile("testDoc.doc",in);
-        uploadFile2(file);
+        uploadFile2(file);*/
+
+        copyFileBuffer();
+      copyFile3();
+
 
     }
 
@@ -146,8 +150,7 @@ public class IOUtil {
              FileOutputStream os = new FileOutputStream(targetPath) ) {
 
             while (is.available() > 0) {
-                int length = is.available() > b.length ? b.length : is.available();
-                is.read(b,0,length);
+                int length = is.read(b);
                 os.write(b,0,length);
             }
 
@@ -258,6 +261,66 @@ public class IOUtil {
             log.info("下载文件异常：{}", e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    //
+    public static void copyFile3() {
+        // 开始时间
+        long begin = System.currentTimeMillis();
+        byte[] b = new byte[1024*2];
+        String sourcePath = "F:/temp/a/test.jar";
+        String targetPath = "F:/temp/b/test2.jar";
+
+        // 语法糖 try-with-resource
+        try (InputStream is = new FileInputStream(sourcePath);
+             FileOutputStream os = new FileOutputStream(targetPath) ) {
+
+            int len;
+            while ((len = is.read(b)) != -1) {
+                os.write(b,0,len);
+            }
+
+            log.info("移文件完成：{}", targetPath);
+        } catch (IOException e) {
+            log.info("移文件异常：{}", e.getMessage());
+            e.printStackTrace();
+        }
+
+        // 用时毫秒
+        System.out.println("节点流用时：" + (System.currentTimeMillis() - begin));//
+    }
+
+    /**
+     * 使用缓冲流高效读写文件
+     * 并且是线程安全的
+     */
+    public static void copyFileBuffer() {
+        // 开始时间
+        long begin = System.currentTimeMillis();
+
+        byte[] b = new byte[1024*2];// 2kb
+        String sourcePath = "F:/temp/a/test.jar";
+        String targetPath = "F:/temp/b/test2.jar";
+
+        // 语法糖 try-with-resource
+        try (InputStream is = new FileInputStream(sourcePath);
+             BufferedInputStream bis = new BufferedInputStream(is);
+             FileOutputStream os = new FileOutputStream(targetPath);
+             BufferedOutputStream bos = new BufferedOutputStream(os);) {
+
+            int len;
+            while ((len = bis.read(b)) != -1) {
+                bos.write(b, 0, len);
+            }
+            log.info("移文件完成：{}", targetPath);
+
+        } catch (IOException e) {
+            log.info("移文件异常：{}", e.getMessage());
+            e.printStackTrace();
+        }
+
+        // 用时毫秒
+        System.out.println("高效流用时：" +  (System.currentTimeMillis() - begin));//
     }
 
 }
