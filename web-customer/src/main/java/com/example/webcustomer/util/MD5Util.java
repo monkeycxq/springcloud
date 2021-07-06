@@ -1,7 +1,11 @@
 package com.example.webcustomer.util;
 
+import lombok.SneakyThrows;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 /**
@@ -23,27 +27,22 @@ public class MD5Util {
      * @param bytes 要加密的参数
      * @return MD5值
      */
+    @SneakyThrows
     public static String getMD5(byte[] bytes) {
-        String result = null;
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-            md.update(bytes);
-            byte[] temp = md.digest(); //MD5的计算结果是一个128位长整数，用字节表示就是16字节
-            char[] chars = new char[32]; //每个字节用16进制表示的话，需要2个字符，所以共32个字符
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(bytes);
+        byte[] temp = md.digest(); //MD5的计算结果是一个128位长整数，用字节表示就是16字节
+        char[] chars = new char[32]; //每个字节用16进制表示的话，需要2个字符，所以共32个字符
 
-            //对MD5的每个字节转换成16进制的字符
-            int k = 0;
-            for (int i = 0; i < 16; i++) {
-                byte aByte = temp[i];
-                chars[k++] = hexDigits[aByte >>> 4 & 0xf];
-                chars[k++] = hexDigits[aByte & 0xf];
-            }
-
-            result = new String(chars);
-        } catch (Exception e) {
-            e.printStackTrace();
+        //对MD5的每个字节转换成16进制的字符
+        int k = 0;
+        for (int i = 0; i < 16; i++) {
+            byte aByte = temp[i];
+            chars[k++] = hexDigits[aByte >>> 4 & 0xf];
+            chars[k++] = hexDigits[aByte & 0xf];
         }
+
+        String result = new String(chars);
         return result;
     }
 
@@ -61,29 +60,19 @@ public class MD5Util {
      * @param file 文件
      * @return MD5值
      */
+    @SneakyThrows
     public static String getFileMD5(File file) {
-        FileInputStream in = null;
-        String result = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            in = new FileInputStream(file);
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        try(FileInputStream in = new FileInputStream(file)) {
             byte[] buffer = new byte[1024];
             while (in.read(buffer) != -1) {
                 md.update(buffer);
             }
-            BigInteger bigInt = new BigInteger(1, md.digest());
-            result = bigInt.toString(16);
-        } catch (Exception e) {
-            throw new RuntimeException("MD5加密异常");
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("MD5加密时，流关闭异常");
-            }
+        }catch (IOException e){
+            e.printStackTrace();
         }
+        BigInteger bigInt = new BigInteger(1, md.digest());
+        String result = bigInt.toString(16);
         return result;
     }
 
