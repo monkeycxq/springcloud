@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 106.52.132.48:8848
+        server-addr: localhost:8848
 
 # 日志配置
 logging:

@@ -33,10 +33,6 @@ public class HelloController {
 
     @GetMapping(value = "/hi")
     public String hi(@RequestParam String name){
-        Date date = new Date();
-        LocalDate localDate = LocalDateUtil.dateToLocalDate(date);
-        log.debug("localDate:{}",localDate);
-        log.info("salt:{}",salt);
         return helloService.hiService(name);
     }
 
