@@ -16,6 +16,7 @@
 15. 使用sentinel 限流,熔断降级;
 16. 使用smart-doc 接口文档生成工具;
 17. 加入java加密技术：用户密码可用MD5、敏感信息用AES
+18. 使用nacos做配置中心：在nacos配置管理界面，配置customer-web.yaml文件，本地必须有bootstrap.properties;
 
 
 

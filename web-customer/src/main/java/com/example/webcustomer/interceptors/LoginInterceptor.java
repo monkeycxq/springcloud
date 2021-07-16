@@ -5,6 +5,7 @@ import com.example.common.util.RedisUtil;
 import com.example.common.web.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author cxq
  * @date 2021/5/6
  */
+@RefreshScope
 public class LoginInterceptor implements HandlerInterceptor {
 
     @Autowired
